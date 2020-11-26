@@ -1,3 +1,7 @@
+// 渲染进程
+/**
+ * ipcRenderer 渲染进程与主进程的通信
+ */
 const {ipcRenderer} = require('electron')
 const ProgressBar = require('progressbar.js/dist/progressbar.js')
 const Timer = require('timer.js')
@@ -11,7 +15,7 @@ let progressBar = new ProgressBar.Circle('#timer-container', {
     trailWidth: 1,
     svgStyle: null
 })
-let workTime = 1 * 60 // 1分钟工作, 自行设定
+let workTime = 1 * 10 // 1分钟工作, 自行设定
 let restTime = 10 // 10秒休息
 let state = {}
 
@@ -79,7 +83,7 @@ const workTimer = new Timer({
                     onclose: startRest
                 })
             } else {
-                alert('休息结束')
+                alert('工作结束')
             }
         }
     }
